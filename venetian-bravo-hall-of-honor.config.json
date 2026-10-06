@@ -1,0 +1,121 @@
+{
+  "customer": "The Venetian Resort Las Vegas",
+  "widgetType": "Custom (Recognition Directory)",
+  "title": "Bravo! Hall of Honor",
+  "branding": {
+    "logos": [
+      {
+        "name": "Company logo (griffin + wordmark)",
+        "sourceMime": "image/jpeg",
+        "embeddedMime": "image/png",
+        "treatment": "Background removed; alpha mask recolored via CSS (maroon in light mode, cream in dark mode)",
+        "bytes": 6806
+      },
+      {
+        "name": "V shield (avatar)",
+        "sourceMime": "image/jpeg",
+        "embeddedMime": "image/png",
+        "treatment": "Alpha mask; replaces full logo in frames 260px tall or less",
+        "bytes": 1330
+      },
+      {
+        "name": "Bravo! Winner badge",
+        "sourceMime": "image/jpeg",
+        "embeddedMime": "image/jpeg",
+        "treatment": "Cropped to circle, 240px; shown beside totals in frames over 420px tall",
+        "bytes": 8878
+      }
+    ],
+    "primaryColor": "#5E000A",
+    "secondaryColor": "#FBEEDA",
+    "accentColor": "#E83F55",
+    "accentColors": {
+      "ok": null,
+      "warn": null,
+      "bad": null,
+      "note": "Skipped per customer"
+    }
+  },
+  "content": {
+    "primaryMetric": {
+      "label": "Team members honored since 1999",
+      "value": "Distinct people in the roster, de-duplicated by hashed employee number, or by name where no number exists (1,815)"
+    },
+    "secondaryMetrics": [
+      {
+        "label": "Bravo! awards",
+        "value": "Total awards, one per honor (1,921)"
+      }
+    ],
+    "list": "Every award as its own row, grouped by quarter, newest first (Q4 2025 back to 1999); rendered in batches on scroll",
+    "search": "Name search, as-you-type (120 ms debounce), case- and accent-insensitive, multi-word AND match, matched text underlined; Escape clears",
+    "statusStates": {
+      "standard": {
+        "trigger": "employeeCode absent or never honored",
+        "greeting": null
+      },
+      "personalHonoree": {
+        "trigger": "hash(employeeCode) matches one or more roster rows",
+        "label": "You've earned {n} Bravo! award(s)",
+        "detail": "Up to 3 quarters listed, then 'and N more'",
+        "behavior": "Own rows highlighted and starred; 'Show mine' filters list to the viewer's awards"
+      }
+    },
+    "emptyState": "No honorees match \"{query}\". Check the spelling or try just a first or last name.",
+    "timeWindows": null,
+    "tone": "Celebratory, polished",
+    "language": "en",
+    "privacy": "Employee numbers never displayed; stored only as FNV-1a 32-bit hashes for matching"
+  },
+  "data": {
+    "primaryParam": "employeeCode",
+    "identityNote": "Not location-scoped; same roster for every location.",
+    "exampleValue": "3132",
+    "workjamVariablesUsed": [
+      "employeeCode",
+      "language",
+      "aspectRatio"
+    ],
+    "workjamVariablesRead": [
+      "externalLocationId",
+      "externalLocationCode",
+      "address",
+      "city",
+      "stateOrProvince",
+      "country",
+      "zipCode",
+      "externalRegionId",
+      "externalRegionCode",
+      "employeeId",
+      "employeeCode",
+      "username",
+      "language",
+      "aspectRatio"
+    ],
+    "customVariables": [
+      {
+        "name": "search",
+        "type": "string",
+        "fallback": "empty (full list)",
+        "displayRule": "Pre-fills the search box"
+      }
+    ],
+    "dataSource": "Static, embedded from Quarterly_Bravo_Recognition_Program.pdf (same cleaned roster as Bravo! Winners widget)",
+    "refreshMs": null
+  },
+  "display": {
+    "defaultAspectRatio": "standard",
+    "supportedAspectRatios": [
+      "standard",
+      "square",
+      "landscape",
+      "portrait"
+    ],
+    "renderingContext": "Phone tile",
+    "layoutTiers": "Over 420px tall: badge shown; 330px or less: totals hidden; 260px or less: shield replaces logo, count hidden, personal strip compacts",
+    "exampleUrl": "https://<your-host>/venetian-bravo-hall-of-honor.html?employeeCode={{employeeCode}}&language={{language}}&aspectRatio=standard"
+  },
+  "fileSizeBytes": 91714,
+  "version": "1.0.1",
+  "builtOn": "2026-10-06"
+}
